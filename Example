@@ -1,0 +1,50 @@
+package prj;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+class Item {
+   String des; 
+   int price;
+   double price1=price;
+   int id;
+   String brand;
+public Object data;
+   public String getDes() {
+      return des; 
+   } 
+   public double getPrice() { 
+      return price1; 
+   } 
+   public int getId() { 
+      return id; 
+   } 
+   public String getBrand() {
+	      return brand; 
+	   } 
+   Item(int i,String n, double d, String b){ 
+      des = n; 
+      price1 = d; 
+      id = i; 
+      brand =b;
+      
+   } 
+   public String toString() {     
+      return ("Item "+ " Id: "+ this.getId()+
+                  " Brand: "+this.getBrand()+             
+              " Price: "+ this.getPrice() +       
+              " Des: "+this.getDes()); 
+   }   
+}
+public class Example {
+   public static void main(String[] args) {
+      List<Item> itemlist = new ArrayList<Item>();
+      itemlist.add(new Item(100, "unique",3999.99,"Nike")); 
+      itemlist.add(new Item(101, "comfort", 7000,"Zara")); 
+      itemlist.add(new Item(102, "perfect", 5000,"Tobi")); 
+      itemlist.add(new Item(103, "elegant", 3000,"Shein"));
+      List<Item> result = itemlist.stream() .filter(c -> (c.getBrand().startsWith("T")))  .sorted((a,b)-> ((List<Item>) a.data).size() - ((List<Item>) b.data).size()).collect(Collectors.toList());
+System.out.println(result);    
+    
+   }
+
+}
